@@ -13,11 +13,11 @@ function buttonClick(value){
     screen.innerText = buffer;
 }
 
-function handleNumber(symbol){
+function handleSymbol(symbol){
     switch(symbol){
-        case "C":
+        case 'C':
             buffer = "0";
-            runningTotal = 0;  
+            runningTotal = 0;
             break;
         case "=":
             if(previousOperator === null){
@@ -29,10 +29,10 @@ function handleNumber(symbol){
             runningTotal = 0;
             break;
         case "←":
-            if(buffer.length === 1){
+            if(buffer.length ===1){
                 buffer = "0";
-            } else {
-                buffer = buffer.substring(0, buffer.length - 1);
+            }else{
+                buffer = buffer.substring(0, buffer.length -1);
             }
             break;
         case "+":
@@ -42,7 +42,6 @@ function handleNumber(symbol){
             handleMath(symbol);
             break;
     }
- 
 }
 
 function handleMath(symbol){
@@ -54,7 +53,7 @@ function handleMath(symbol){
 
     if(runningTotal === 0){
         runningTotal = intBuffer;
-    } else {
+    }else{
         flushOperation(intBuffer);
     }
     previousOperator = symbol;
@@ -64,11 +63,11 @@ function handleMath(symbol){
 function flushOperation(intBuffer){
     if(previousOperator === "+"){
         runningTotal += intBuffer;
-    } else if(previousOperator === "-"){
+    }else if(previousOperator === "-"){
         runningTotal -= intBuffer;
-    } else if(previousOperator === "×"){
+    }else if(previousOperator === "×"){
         runningTotal *= intBuffer;
-    } else if(previousOperator === "÷"){
+    }else if(previousOperator === "÷"){
         runningTotal /= intBuffer;
     }
 }
@@ -76,13 +75,14 @@ function flushOperation(intBuffer){
 function handleNumber(numberString){
     if(buffer === "0"){
         buffer = numberString;
-    } else {
+    }else{
         buffer += numberString;
     }
 }
 
 function init(){
-    document.querySelector(".calc-buttons").addEventListener("click", function(event){
+    document.querySelector(".calc-buttons").
+    addEventListener("click", function(event){
         buttonClick(event.target.innerText);
     });
 }
